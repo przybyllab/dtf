@@ -32,8 +32,6 @@ renameSample <- function(x) {
 design_methylation_detail_data$Sample_name  <- lapply(design_methylation_detail_data$Sample_name, renameSample)
 
 rownames(design_methylation_detail_data) <- design_methylation_detail_data$Sample_name #making sample_names the index
-#design_methylation_detail_data <- design_methylation_detail_data[,c(1,3,4,5,6,7,8,9,10)] #dropping sample_name
-
 
 design_methylation_detail_data <- t(design_methylation_detail_data) #transpose of df to make the sample name the column names
 
