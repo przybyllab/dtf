@@ -8,7 +8,7 @@ Package_version = packageVersion("clustvis")
 Date = as.Date(Sys.Date(), "%Y_%m_%d")
 
 #choosing the scalling that will be used for analysis
-for (scalling_type in c("none","uv")){
+for (scalling_type in c("none")){
   
   #choosing the different patients that will be analyzed
   for (Patient_ID in c(1,5,8)){ 
@@ -17,7 +17,7 @@ for (scalling_type in c("none","uv")){
     for (clsuterType in c("complete","average","mcquitty", "ward.D")){
       
       #choosing the datasets that are used for this run
-      for (topxvar in  c("top_1000", "top_1percent")){
+      for (topxvar in  c("top_1percent")){
         
         #reading files 
         file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\%s_beta_value_var_20DTFsamples_Patient_%d.csv", topxvar, Patient_ID)
