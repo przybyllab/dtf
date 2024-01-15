@@ -1,4 +1,4 @@
-Multi-omic and multi-region profiling of desmoid tumors reveals intra- and inter-tumor heterogeneity
+<h1>Multi-omic and multi-region profiling of desmoid tumors reveals intra- and inter-tumor heterogeneity</h1>
 
 Chelsea De Bellis1, Sujay Vennam2, Christopher Eeles3, Jenny Hoffman2, Kristen Ganjoo4, Benjamin Haibe-Kains3,5, Matt van de Rijn2, Joanna Przybyl1,6
 
@@ -36,20 +36,16 @@ Research supported by the Desmoid Tumor Research Foundation (M.vdR., J.P.)
 
 
 
-ABSTRACT
+<h2>ABSTRACT</h2>
 
-Introduction
-
+<h3>Introduction</h3>
 Desmoid tumors are bland fibroblastic tumors with little histologic variation between different regions of the tumor. While desmoid tumors do not metastasize, they have a high rate of local recurrence after complete resection and no reliable predictors of clinical behavior exist. The presence of molecular intra- and inter-tumor heterogeneity has been well established in other, higher grade, sarcomas but little is known about molecular variability within histologically bland lesions. In this study, we sought to examine the extent of intra- and inter-tumoral clonal heterogeneity of desmoid tumors, which may contribute to their pathogenesis and possible relapse.
 
-Methods
-
+<h3>Methods</h3>
 We performed a multi-omic analysis including DNA methylation, DNA copy number alterations, point mutations and gene expression on 24 specimens from different areas of primary and recurrent desmoid tumors from 3 patients (7-9 specimens per patient).
 
-Results
-
+<h3>Results</h3>
 The studies showed a remarkable heterogeneity of DNA methylation, DNA copy number alterations, point mutations and gene expression between different regions of primary or recurrent tumors in each patient. We discovered the evidence for subclonal alterations in different areas of individual tumors. Among the four types of data, the transcriptomic profiles showed the highest degree of variability within tumors and between primary and recurrent tumors from the same patient. Gene expression signatures reported to be associated with favorable and unfavorable outcome were detected in different regions within the same tumor.
 
-Conclusions
-
+<h3>Conclusions</h3>
 This study shows an unexpected degree of intra- and inter-tumor heterogeneity in desmoid tumors. Our analysis indicates that even in this histologically monotonous lesion, molecular analysis of a single tumor biopsy may underestimate the magnitude of molecular alterations. We demonstrate that molecular intra- and inter-tumor heterogeneity is an important consideration in drug development and validation of prognostic and predictive biomarkers for these tumors.
