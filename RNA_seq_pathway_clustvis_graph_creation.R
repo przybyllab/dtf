@@ -1,0 +1,197 @@
+library(matrixStats)
+library(dplyr)
+library(clustvis)
+
+#Creating a function to calculate the beta value variation 
+CalVar <- function(df) {
+  
+  #converting all beta values to numeric type as they are read as a character when read from a csv
+  #5 IS HARD CODED, THIS NEEDS TO BE CHANGED IF THE DESCRIPTION DATA IS CHANGED
+  valuesAsNumeric = mutate_all(df[5:dim(df)[1],], function(x) as.numeric(as.character(x)))
+  variance = rowVars(as.matrix(valuesAsNumeric)) #calculating the variation 
+  
+  #adding the beta values variation
+  #the length of the beta_variance vector is 518 433 and will be adding it as a column to the dataframe data_of_interest,
+  #therefore the vector has to have the same length are there are number of rows, so we have to add 
+  #null values so that the vector has the correct length
+  #I will be adding -1s because variance can not be a -1 value and we are selecting for the largest variance values
+  rowOfData_of_interest =  dim(df)[1]
+  NumberOfNullValuesToAdd = rowOfData_of_interest - length(variance)
+  variance_column = c( rep(-1, each= NumberOfNullValuesToAdd), variance) # concatenating 26 -1s 
+  df$variance = variance_column
+  return(df)
+}
+
+
+#Creating a function to take the top 1% variation beta values 
+top5Percent_Var <- function(df){
+  
+  #note that because the first rows of our dataframe hold description data, they will have a -1 beta_variation value
+  variance_column = df$variance #getting a vector of beta variation
+  Is_neg1 = variance_column == -1 
+  descriptionRowsCutOff = match(FALSE, Is_neg1 ) - 1 
+  
+  #separating the descriptor rows from RNAseq vsd rows 
+  designData = df[1:descriptionRowsCutOff,]
+  last_row = dim(df)[1]
+  RNAseq = df[descriptionRowsCutOff+1 : last_row,]
+  
+  #sorting by variance
+  sortedVarValues <- RNAseq [order(RNAseq$variance, decreasing = TRUE),]
+  
+  #getting top 5%
+  index_of_top5percent = c(1:(dim(sortedVarValues)[1]*.05))
+  top_5percent_var = sortedVarValues[index_of_top5percent,]
+  
+  #concatenating the design file and the top 1000 var cg regions
+  descript_top5percent = rbind(designData, top_5percent_var)
+  
+  last_column = dim(descript_top5percent)[2] #this is the beta Variance row
+  descript_top5percent = descript_top5percent[,1:last_column -1] #removing the beta variance row
+  
+  return(descript_top5percent)
+}
+
+#Creating a function to take the top 1% variation beta values 
+top1000_Var <- function(df){
+  
+  #note that because the first rows of our dataframe hold description data, they will have a -1 beta_variation value
+  variance_column = df$variance #getting a vector of beta variation
+  Is_neg1 = variance_column == -1 
+  descriptionRowsCutOff = match(FALSE, Is_neg1 ) - 1 
+  
+  #separating the descriptor rows from RNAseq vsd rows 
+  designData = df[1:descriptionRowsCutOff,]
+  last_row = dim(df)[1]
+  RNAseq = df[descriptionRowsCutOff+1 : last_row,]
+  
+  #sorting by variance
+  sortedVarValues <- RNAseq [order(RNAseq$variance, decreasing = TRUE),]
+  
+  #getting top 1000
+  index_of_top5percent = c(1:1000)
+  top_5percent_var = sortedVarValues[index_of_top5percent,]
+  
+  #concatenating the design file and the top 1000 var cg regions
+  descript_top5percent = rbind(designData, top_5percent_var)
+  
+  last_column = dim(descript_top5percent)[2] #this is the beta Variance row
+  descript_top5percent = descript_top5percent[,1:last_column -1] #removing the beta variance row
+  
+  return(descript_top5percent)
+}
+#Creating a function to take the top 1% variation beta values 
+top1Percent_Var <- function(df){
+  
+  #note that because the first rows of our dataframe hold description data, they will have a -1 beta_variation value
+  variance_column = df$variance #getting a vector of beta variation
+  Is_neg1 = variance_column == -1 
+  descriptionRowsCutOff = match(FALSE, Is_neg1 ) - 1 
+  
+  #separating the descriptor rows from RNAseq vsd rows 
+  designData = df[1:descriptionRowsCutOff,]
+  last_row = dim(df)[1]
+  RNAseq = df[descriptionRowsCutOff+1 : last_row,]
+  
+  #sorting by variance
+  sortedVarValues <- RNAseq [order(RNAseq$variance, decreasing = TRUE),]
+  
+  #getting top 1%
+  index_of_top1percent = c(1:(dim(sortedVarValues)[1]*.01))
+  top_1percent_var = sortedVarValues[index_of_top1percent,]
+  
+  #concatenating the design file and the top 1000 var cg regions
+  descript_top1percent = rbind(designData, top_1percent_var)
+  
+  last_column = dim(descript_top1percent)[2] #this is the beta Variance row
+  descript_top1percent = descript_top1percent[,1:last_column -1] #removing the beta variance row
+  
+  return(descript_top1percent)
+}
+
+for (Patient_ID in c(1,5,8)){
+
+  #reading in the file and processing it so that it is the proper format
+  tdata <- read.csv(sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Pt%d_vsd.csv', Patient_ID))
+  
+  rownames(tdata) <- make.names(tdata[,1], unique = TRUE) #issue when setting rowname using csv
+  tdata <- tdata[,2: dim(tdata)[2]] #removing the first column
+  designData <- read.csv(sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\design_pt%d.csv', Patient_ID), row.names = 1)
+  print(dim(designData))
+  designData <- t(designData)
+  
+  clustvis_format = rbind(designData, tdata)
+  clustvis_format = clustvis_format[c(1:dim(clustvis_format)[1]),]
+  vsd_with_variance <- CalVar(clustvis_format)
+  top5PerVar_vsd <- top5Percent_Var(vsd_with_variance)
+  top1PerVar_vsd <- top1Percent_Var(vsd_with_variance )
+  top1000Var_vsd <- top1000_Var(vsd_with_variance )
+  
+  #writing dataframe to csv
+  write.csv(top5PerVar_vsd, 
+            sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Clustvis_format\\RNA_seq_design_info_with_vsd_values_Top5Percent_Patient%d_4April2023.csv', Patient_ID))
+  
+  write.csv(top1PerVar_vsd, 
+            sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Clustvis_format\\RNA_seq_design_info_with_vsd_values_Top1Percent_Patient%d_4April2023.csv', Patient_ID))
+  
+  write.csv(top1000Var_vsd, 
+            sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Clustvis_format\\RNA_seq_design_info_with_vsd_values_Top1000_Patient%d_4April2023.csv", Patient_ID))
+}
+
+pathways <- c('KEGG_PENTOSE_PHOSPHATE_PATHWAY',
+              'HALLMARK_DNA_REPAIR',
+              'KEGG_GALACTOSE_METABOLISM',
+              'KEGG_INOSITOL_PHOSPHATE_METABOLISM',
+              'KEGG_PROPANOATE_METABOLISM',
+              'REACTOME_SIGNALING_BY_HIPPO',
+              'KEGG_CITRATE_CYCLE_TCA_CYCLE',
+              'HALLMARK_G2M_CHECKPOINT',
+              'KEGG_BUTANOATE_METABOLISM',
+              'KEGG_FRUCTOSE_AND_MANNOSE_METABOLISM',
+              'HALLMARK_MITOTIC_SPINDLE',
+              'KEGG_ASCORBATE_AND_ALDARATE_METABOLISM',
+              'HALLMARK_MYC_TARGETS_V2',
+              'PID_WNT_NONCANONICAL_PATHWAY',
+              'KEGG_PENTOSE_AND_GLUCURONATE_INTERCONVERSIONS',
+              'PID_WNT_CANONICAL_PATHWAY',
+              'PID_WNT_SIGNALING_PATHWAY',
+              'HALLMARK_MYC_TARGETS_V1',
+              'KEGG_AMINO_SUGAR_AND_NUCLEOTIDE_SUGAR_METABOLISM',
+              'KEGG_STARCH_AND_SUCROSE_METABOLISM',
+              'KEGG_WNT_SIGNALING_PATHWAY',
+              'KEGG_GLYCOLYSIS_GLUCONEOGENESIS',
+              'WP_HIPPO_SIGNALING_REGULATION_PATHWAYS',
+              'KEGG_GLYOXYLATE_AND_DICARBOXYLATE_METABOLISM',
+              'HALLMARK_NOTCH_SIGNALING',
+              'BIOCARTA_WNT_PATHWAY',
+              'KEGG_PYRUVATE_METABOLISM',
+              'HALLMARK_WNT_BETA_CATENIN_SIGNALING')
+
+for (Patient_ID in c(1,5,8)){
+    design_file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\design_pt%d.csv", Patient_ID)
+    file_path = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Pt%d_vsd_", Patient_ID)
+    for(pathway in pathways){
+    
+      #reading in the file and processing it so that it is the proper format
+      file_path = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Pt%d_vsd_", Patient_ID)
+      file_with_edata <- paste(file_path, pathway, ".csv", sep = "")
+      edata <-read.csv(file_with_edata)
+      rownames(edata) <- make.names(edata[,1], unique = TRUE) #issue when setting rowname using csv
+      edata <- edata[,2: dim(edata)[2]] #removing the first column
+      designData <- read.csv(design_file, row.names = 1)
+      print(dim(designData))   
+      
+      designData <- t(designData)
+      
+      clustvis_format = rbind(designData, edata)
+      clustvis_format = clustvis_format[c(1:dim(clustvis_format)[1]),]
+      
+      
+      clustvis_file_name = sprintf("design_info_Pt%d_vsd_%s_23March2023", Patient_ID, pathway)
+      write.csv(clustvis_format, 
+                sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Clustvis_format\\%s.csv', clustvis_file_name))
+      
+    
+  }
+}
+
