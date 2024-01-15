@@ -1,38 +1,34 @@
 <h1>Multi-omic and multi-region profiling of desmoid tumors reveals intra- and inter-tumor heterogeneity</h1>
 
-Chelsea De Bellis1, Sujay Vennam2, Christopher Eeles3, Jenny Hoffman2, Kristen Ganjoo4, Benjamin Haibe-Kains3,5, Matt van de Rijn2, Joanna Przybyl1,6
+Chelsea De Bellis<sup>1</sup>, Sujay Vennam<sup>2</sup>, Christopher Eeles<sup>3</sup>, Jenny Hoffman<sup>2</sup>, Kristen Ganjoo<sup>4</sup>, Benjamin Haibe-Kains<sup>3,5</sup>, Matt van de RijnM<sup>2</sup>, Joanna Przybyl<sup>1,6</sup>
 
-1 Department of Surgery, McGill University, Montreal, H4A 3J1 QC, Canada
+1. Department of Surgery, McGill University, Montreal, H4A 3J1 QC, Canada
 
-2 Department of Pathology, Stanford University School of Medicine, Stanford, 94305 CA, USA
+2. Department of Pathology, Stanford University School of Medicine, Stanford, 94305 CA, USA
 
-3 Princess Margaret Cancer Centre, University Health Network, Toronto, ON M5G 2C1, Canada
+3. Princess Margaret Cancer Centre, University Health Network, Toronto, ON M5G 2C1, Canada
 
-4 Department of Medicine, Division of Medical Oncology, Stanford University, Stanford, 94305 CA, USA
+4. Department of Medicine, Division of Medical Oncology, Stanford University, Stanford, 94305 CA, USA
 
-5 Department of Medical Biophysics and Department of Computer Science, University of Toronto, Ontario Institute for Cancer Research, & Vector Institute for Artificial Intelligence, Toronto, ON, Canada
+5. Department of Medical Biophysics and Department of Computer Science, University of Toronto, Ontario Institute for Cancer Research, & Vector Institute for Artificial Intelligence, Toronto, ON, Canada
 
-6 Cancer Research Program, The Research Institute of the McGill University Health Centre, Montreal, H4A 3J1 QC, Canada
+6. Cancer Research Program, The Research Institute of the McGill University Health Centre, Montreal, H4A 3J1 QC, Canada
 
-Corresponding author
 
+**Corresponding author**<br>
 Joanna Przybyl
-
 Department of Surgery, McGill University
-
 Cancer Research Program, The Research Institute of the McGill University Health Centre
-
 1001 Decarie Boulevard, E M2.3218
-
 Montreal, H4A 3J1 QC, Canada
-
 Telephone: +1 514-934-1934 ext. 37751
-
 E-mail: joanna.przybyl@mcgill.ca
 
-Research support
-
+**Research support**<br>
 Research supported by the Desmoid Tumor Research Foundation (M.vdR., J.P.)
+
+**Disclosure/Conflict of Interest**<br>
+The authors declare no conflict of interest.
 
 
 
