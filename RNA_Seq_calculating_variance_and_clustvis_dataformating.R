@@ -73,13 +73,9 @@ clustvis_format = clustvis_format [c(1,c(3, c(4:dim(clustvis_format)[1]))),]
 
 
 vsd_with_variance <- CalVar(clustvis_format)
-top5PerVar_vsd <- top5Percent_Var(vsd_with_variance)
 top1PerVar_vsd <- top1Percent_Var(vsd_with_variance )
 
 #writing dataframe to csv
-write.csv(top5PerVar_vsd, 
-          'C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\RNA_seq_design_info_with_vsd_values_Top5Percent_Patient1_9Feb2023.csv')
-
 write.csv(top1PerVar_vsd, 
           'C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\RNA_seq_design_info_with_vsd_values_Top1Percent_Patient1_9Feb2023.csv')
 
@@ -109,9 +105,6 @@ top5PerVar_vsd <- top5Percent_Var(vsd_with_variance)
 top1PerVar_vsd <- top1Percent_Var(vsd_with_variance )
 
 #writing dataframe to csv
-write.csv(top5PerVar_vsd, 
-          'C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\RNA_seq_design_info_with_vsd_values_Top5Percent_Patient5_9Feb2023.csv')
-
 write.csv(top1PerVar_vsd, 
           'C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\RNA_seq_design_info_with_vsd_values_Top1Percent_Patient5_9Feb2023.csv')
 
@@ -136,13 +129,9 @@ clustvis_format = clustvis_format [c(1,c(3, c(4:dim(clustvis_format)[1]))),]
 
 
 vsd_with_variance <- CalVar(clustvis_format)
-top5PerVar_vsd <- top5Percent_Var(vsd_with_variance)
 top1PerVar_vsd <- top1Percent_Var(vsd_with_variance )
 
 #writing dataframe to csv
-write.csv(top5PerVar_vsd, 
-          'C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\RNA_seq_design_info_with_vsd_values_Top5Percent_Patient8_9Feb2023.csv')
-
 write.csv(top1PerVar_vsd, 
           'C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\RNA_seq_design_info_with_vsd_values_Top1Percent_Patient8_9Feb2023.csv')
 
