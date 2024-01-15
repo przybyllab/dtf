@@ -3,8 +3,6 @@ library(matrixStats)
 
 #reading in experimental data 
 edata <- read.csv('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\20DTFsamples_rounded_beta_matrix_28Oct2022.csv', row.names = 1)
-dim(edata)
-head(edata)
 
 #reading design file 
 ddata <- read.csv('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\design_DTF_ALL_het_18Jan2023_design_DTF67_EE.csv')
@@ -33,8 +31,7 @@ renameSample <- function(x) {
 }
 design_methylation_detail_data$Sample_name  <- lapply(design_methylation_detail_data$Sample_name, renameSample)
 
-
-rownames(design_methylation_detail_data) <- design_methylation_detail_data$Sample_name #making sample names the index
+rownames(design_methylation_detail_data) <- design_methylation_detail_data$Sample_name #making sample_names the index
 #design_methylation_detail_data <- design_methylation_detail_data[,c(1,3,4,5,6,7,8,9,10)] #dropping sample_name
 
 
