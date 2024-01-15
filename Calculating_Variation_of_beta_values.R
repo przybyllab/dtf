@@ -5,7 +5,7 @@ library(dplyr)
 CalBetaVal <- function(df) {
   
   #converting all beta values to numeric type as they are read as a character when read from a csv
-  #5 IS HARD CODED, THIS NEEDS TO BE CHANGED IF THE DESCRIPTION DATA IS CHANGED
+  #5 is hard coded, this needs to be changed if the description data is changed
   betavaluesAsNumeric = mutate_all(df[5:518437,], function(x) as.numeric(as.character(x)))
   beta_variance = rowVars(as.matrix(betavaluesAsNumeric)) #calculating the variation 
   
