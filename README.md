@@ -16,13 +16,13 @@ Chelsea De Bellis<sup>1</sup>, Sujay Vennam<sup>2</sup>, Christopher Eeles<sup>3
 
 
 **Corresponding author**<br>
-Joanna Przybyl
-Department of Surgery, McGill University
-Cancer Research Program, The Research Institute of the McGill University Health Centre
-1001 Decarie Boulevard, E M2.3218
-Montreal, H4A 3J1 QC, Canada
-Telephone: +1 514-934-1934 ext. 37751
-E-mail: joanna.przybyl@mcgill.ca
+Joanna Przybyl<br>
+Department of Surgery, McGill University<br>
+Cancer Research Program, The Research Institute of the McGill University Health Centre<br>
+1001 Decarie Boulevard, E M2.3218<br>
+Montreal, H4A 3J1 QC, Canada<br>
+Telephone: +1 514-934-1934 ext. 37751<br>
+E-mail: joanna.przybyl@mcgill.ca<br>
 
 **Research support**<br>
 Research supported by the Desmoid Tumor Research Foundation (M.vdR., J.P.)
