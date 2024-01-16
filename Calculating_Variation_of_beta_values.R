@@ -6,17 +6,17 @@ CalBetaVal <- function(df) {
   
   #converting all beta values to numeric type as they are read as a character when read from a csv
   #5 is hard coded, this needs to be changed if the description data is changed
-  betavaluesAsNumeric = mutate_all(df[5:518437,], function(x) as.numeric(as.character(x)))
+  betavaluesAsNumeric = mutate_all(df[5:dim(df)[1],], function(x) as.numeric(as.character(x)))
   beta_variance = rowVars(as.matrix(betavaluesAsNumeric)) #calculating the variation 
   
   #adding the beta values variation
-  #the length of the beta_variance vector is 518 433 and will be adding it as a column to the dataframe data_of_interest,
-  #therefore the vector has to have the same length are there are number of rows, so we have to add 
+  #the beta_variance vector will be added as a column to the dataframe data_of_interest,
+  #therefore the vector has to have the same length as there are number of rows, so we have to add 
   #null values so that the vector has the correct length
-  #I will be adding -1s because variance can not be a -1 value and we are selecting for the largest variance values
+  #I will be adding -1s because variance can not be a -1 
   rowOfData_of_interest =  dim(df)[1]
   NumberOfNullValuesToAdd = rowOfData_of_interest - length(beta_variance)
-  beta_variance_column = c( rep(-1, each= NumberOfNullValuesToAdd), beta_variance) # concatenating 26 -1s 
+  beta_variance_column = c( rep(-1, each= NumberOfNullValuesToAdd), beta_variance) # concatenating -1s 
   df$beta_variance = beta_variance_column
   return(df)
 }
@@ -42,7 +42,7 @@ top1Percent_BetaVar <- function(df){
   index_of_top1percent = c(1:(dim(sortedBetaVarValues)[1]*.01))
   top_1percent_var = sortedBetaVarValues[index_of_top1percent,]
   
-  #concatenating the design file and the top 1000 var cg regions
+  #concatenating the design file and the top 1% most variablr cg regions
   descript_top1percent = rbind(designData, top_1percent_var)
   
   last_column = dim(descript_top1percent)[2] #this is the beta Variance row
