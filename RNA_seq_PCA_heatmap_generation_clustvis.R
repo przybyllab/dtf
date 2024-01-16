@@ -9,40 +9,13 @@ Package_version = packageVersion("clustvis")
 Date = as.Date(Sys.Date(), "%Y_%m_%d")
 
 #creating a vector of the pathways under analysis 
-pathways = c('KEGG_PENTOSE_PHOSPHATE_PATHWAY',
-             'HALLMARK_DNA_REPAIR',
-             'KEGG_GALACTOSE_METABOLISM',
-             'KEGG_INOSITOL_PHOSPHATE_METABOLISM',
-             'KEGG_PROPANOATE_METABOLISM',
-             'REACTOME_SIGNALING_BY_HIPPO',
-             'KEGG_CITRATE_CYCLE_TCA_CYCLE',
-             'HALLMARK_G2M_CHECKPOINT',
-             'KEGG_BUTANOATE_METABOLISM',
-             'KEGG_FRUCTOSE_AND_MANNOSE_METABOLISM',
-             'HALLMARK_MITOTIC_SPINDLE',
-             'KEGG_ASCORBATE_AND_ALDARATE_METABOLISM',
-             'HALLMARK_MYC_TARGETS_V2',
-             'PID_WNT_NONCANONICAL_PATHWAY',
-             'KEGG_PENTOSE_AND_GLUCURONATE_INTERCONVERSIONS',
-             'PID_WNT_CANONICAL_PATHWAY',
-             'PID_WNT_SIGNALING_PATHWAY',
-             'HALLMARK_MYC_TARGETS_V1',
-             'KEGG_AMINO_SUGAR_AND_NUCLEOTIDE_SUGAR_METABOLISM',
-             'KEGG_STARCH_AND_SUCROSE_METABOLISM',
-             'KEGG_WNT_SIGNALING_PATHWAY',
-             'KEGG_GLYCOLYSIS_GLUCONEOGENESIS',
-             'WP_HIPPO_SIGNALING_REGULATION_PATHWAYS',
-             'KEGG_GLYOXYLATE_AND_DICARBOXYLATE_METABOLISM',
-             'HALLMARK_NOTCH_SIGNALING',
-             'BIOCARTA_WNT_PATHWAY',
-             'KEGG_PYRUVATE_METABOLISM',
-             'HALLMARK_WNT_BETA_CATENIN_SIGNALING')
+pathways = c('PROGNOSTIC_MARKERS',)
 
 #choosing the scalling that will be used for analysis
-for (scalling_type in c("none","uv")){
+for (scalling_type in c("uv")){
   
-  #choosing the different type of grouping algorithms to use 
-  for (clsuterType in c("complete","average","mcquitty", "ward.D")){
+  #choosing the different type of clustering algorithms to use 
+  for (clusterType in c("complete","average","mcquitty", "ward.D")){
     
     #choosing the different patients that will be analyzed
     for (Patient_ID in c(1,5,8)){
@@ -71,21 +44,21 @@ for (scalling_type in c("none","uv")){
         
         #heatmap generation
         hm = generateHeatmap(proc, clustDistRows = NA, clustMethodRows = NA, clustDistCols = "euclidean", 
-                             clustMethodCols = clsuterType, legendColorScheme =  "Set2", fontSizeColnames = 20, 
+                             clustMethodCols = clusterType, legendColorScheme =  "Set2", fontSizeColnames = 20, 
                              fontSizeGeneral = 10, colorAnnoCol = c("Type", "Mutation","Year"), plotWidth = 15)
-        saveHeatmap(hm, file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Exploratory_Analysis\\Patient%d\\RNA_seq\\Heatmap\\clustvisHeatmap_Euclidean_%s_20DTF_rowcenter_none_scalling_%s_vsd_Patient%d_%s_clustvis_%s.pdf", Patient_ID,  clsuterType, pathway,Patient_ID,Date, Package_version))
+        saveHeatmap(hm, file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Exploratory_Analysis\\Patient%d\\RNA_seq\\Heatmap\\clustvisHeatmap_Euclidean_%s_20DTF_rowcenter_none_scalling_%s_vsd_Patient%d_%s_clustvis_%s.pdf", Patient_ID,  clusterType, pathway,Patient_ID,Date, Package_version))
       }
     }
   }
   
-  #choosing the different type of grouping algorithms to use 
-  for (clsuterType in c("complete","average","mcquitty", "ward.D")){
+  #choosing the different type of clustering algorithms to use 
+  for (clusterType in c("complete","average","mcquitty", "ward.D")){
     
     #choosing the different patients that will be analyzed
     for (Patient_ID in c(1,5,8)){
       
       #choosing the datasets that are used for this run
-      for (topxvar in  c("Top1000", "Top1Percent", "Top5Percent")){
+      for (topxvar in  c("Top1Percent",)){
         
         #reading file
         file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Clustvis_format\\RNA_seq_design_info_with_vsd_values_%s_Patient%d_4April2023.csv", topxvar, Patient_ID)
@@ -108,8 +81,8 @@ for (scalling_type in c("none","uv")){
         #heatmap generation
         hm = generateHeatmap(proc, clustDistRows = NA, clustMethodRows = NA, clustDistCols = "euclidean",
                              colorAnnoCol = c("Type", "Mutation","Year"),
-                             clustMethodCols = clsuterType, legendColorScheme =  "Set2", fontSizeColnames = 20,  fontSizeGeneral = 15)
-        saveHeatmap(hm, file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Exploratory_Analysis\\Patient%d\\RNA_seq\\Heatmap\\clustvisHeatmap_Euclidean_%s_20DTFsamples_rowcenter_none_scalling_%s_vsd_Patient%d_%s_clustvisVersion_%s.pdf", Patient_ID, clsuterType, topxvar,Patient_ID,Date, Package_version))
+                             clustMethodCols = clusterType, legendColorScheme =  "Set2", fontSizeColnames = 20,  fontSizeGeneral = 15)
+        saveHeatmap(hm, file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Exploratory_Analysis\\Patient%d\\RNA_seq\\Heatmap\\clustvisHeatmap_Euclidean_%s_20DTFsamples_rowcenter_none_scalling_%s_vsd_Patient%d_%s_clustvisVersion_%s.pdf", Patient_ID, clusterType, topxvar,Patient_ID,Date, Package_version))
       }
     }
   }
