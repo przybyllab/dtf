@@ -37,7 +37,7 @@ design_methylation_detail_data <- t(design_methylation_detail_data) #transpose o
 
 
 
-#merging
+#merging desing info with experimental
 design_methylation__data <- rbind(design_methylation_detail_data, edata)
 
 #unlist all columns as they were all lists
