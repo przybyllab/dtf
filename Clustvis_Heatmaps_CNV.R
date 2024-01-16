@@ -8,11 +8,11 @@ Date = as.Date(Sys.Date(), "%Y_%m_%d")
 
 
 #_______________________________________________creating pca and heatmap___________________________________#
-#choosing the different type of grouping algorithms to use 
+#choosing the different type of clustering algorithms to use 
 for (clusterType in c("complete","average","mcquitty", "ward.D")){ 
   
   #choosing the datasets that are used for this run
-  for (merge_dvg in c("_nomerge_dvgNotConsidered", "_nomerge_dvgPartialNone")){
+  for (merge_dvg in c( "_nomerge_dvgPartialNone")){
     
     #reading files for patient 5
     file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\CNV\\clustvis_format\\clustvisPatient5_CNVs_filtered%s.csv", merge_dvg)
