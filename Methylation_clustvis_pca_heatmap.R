@@ -20,7 +20,7 @@ for (scalling_type in c("none")){
       for (topxvar in  c("top_1percent")){
         
         #reading files 
-        file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\%s_beta_value_var_20DTFsamples_Patient_%d.csv", topxvar, Patient_ID)
+        file = sprintf("[pathwaywat to clustvis file]\\%s_beta_value_var_20DTFsamples_Patient_%d.csv", topxvar, Patient_ID)
         
         #preparing data for clustvis 
         imp = importData(file)
@@ -35,12 +35,12 @@ for (scalling_type in c("none")){
                           legendPosition = "right", fontSize = 20, axisLabelPrefix = "PC",
                           showVariance = TRUE, showSampleIds = FALSE, maxColorLevels = 30,
                           maxShapeLevels = 62)
-        savePCA(pca, file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Exploratory_Analysis\\Patient%d\\Methylation\\PCA\\clustvis_PCA_Euclidean_Ward_20DTFsamples_NOrowCentering_%s_scalling_%s_beta_matrix_Patient%d_%s_clustvisVersion_%s.pdf",Patient_ID,scalling_type, topxvar,Patient_ID,Date, Package_version))
+        savePCA(pca, file = sprintf("[Pathway to save PCA]\\clustvis_PCA_Euclidean_Ward_20DTFsamples_NOrowCentering_%s_scalling_%s_beta_matrix_Patient%d_%s_clustvisVersion_%s.pdf",Patient_ID,scalling_type, topxvar,Patient_ID,Date, Package_version))
         
         #heatmap generation
         hm = generateHeatmap(proc, clustDistRows = NA, clustMethodRows = NA, clustDistCols = "euclidean", 
                              clustMethodCols = clsuterType,fontSizeColnames = 20, fontSizeGeneral = 15, legendColorScheme =  "Dark2", colorAnnoCol = c("Type", "Mutation","Year"))
-        saveHeatmap(hm, file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Exploratory_Analysis\\Patient%d\\Methylation\\Heatmap\\clustvisHeatmap_Euclidean_%s_20DTFsamples_NOrowcentering_%s_scalling_%s_beta_matrix_Patient%d_%s_clustvisVersion_%s.pdf", Patient_ID, clsuterType,scalling_type, topxvar,Patient_ID,Date, Package_version))
+        saveHeatmap(hm, file = sprintf("[Pathway to heatmaps]\\clustvisHeatmap_Euclidean_%s_20DTFsamples_NOrowcentering_%s_scalling_%s_beta_matrix_Patient%d_%s_clustvisVersion_%s.pdf", Patient_ID, clsuterType,scalling_type, topxvar,Patient_ID,Date, Package_version))
         
       }
     }
