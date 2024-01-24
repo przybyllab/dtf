@@ -50,9 +50,12 @@ This study shows an unexpected degree of intra- and inter-tumor heterogeneity in
 <h1>Workflow for Code</h1>
 <h2>DNA Methylation Analysis</h2>
 1. Methylation_Making_dataframe_for_clustvis.R
+
 2. Calculating_Variation_of_beta_values.R
+
 3. Methylation_clustvis_pca_heatmap.R
 
 <h2>RNA-seq Analysis</h2>
 1. Prognosis_Pathways_file_creation_RNA_seq.ipynb
+
 2. RNA_seq_pathway_clutvis_graph_creation.R
