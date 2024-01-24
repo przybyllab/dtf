@@ -54,7 +54,7 @@ top1Percent_BetaVar <- function(df){
 
 
 #Read in the data
-edata <- read.csv('[insert pathway to methyaltion files under study]/20samples_detailed_and_design_info_DTFhet_with_rounded_beta_matrix18Jan2023.csv', row.names = 1)
+edata <- read.csv('[insert path to methyaltion files under study]/20samples_detailed_and_design_info_DTFhet_with_rounded_beta_matrix18Jan2023.csv', row.names = 1)
 dim(edata)
 head(edata)
 
@@ -73,12 +73,12 @@ data_of_interest_pt8 <- data_of_interest_pt8[2: dim(data_of_interest_pt8)[1],]
 
 #calculating the variation for patient 1
 data_of_interest_pt1 <- CalBetaVal(data_of_interest_pt1)
-write.csv(top1Percent_BetaVar(data_of_interest_pt1), "[Insert pathway to where to save the clutvis formated file]\\top_1percent_beta_value_var_20DTFsamples_Patient_1.csv") #writing to file
+write.csv(top1Percent_BetaVar(data_of_interest_pt1), "[Insert path to where to save the clutvis formated file]\\top_1percent_beta_value_var_20DTFsamples_Patient_1.csv") #writing to file
 
 #calculating the variation for patient 5
 data_of_interest_pt5 <- CalBetaVal(data_of_interest_pt5)
-write.csv(top1Percent_BetaVar(data_of_interest_pt5), "[Insert pathway to where to save the clutvis formated file]\\top_1percent_beta_value_var_20DTFsamples_Patient_5.csv") #writing to file
+write.csv(top1Percent_BetaVar(data_of_interest_pt5), "[Insert path to where to save the clutvis formated file]\\top_1percent_beta_value_var_20DTFsamples_Patient_5.csv") #writing to file
 
 #calculating the variation for patient 8
 data_of_interest_pt8 <- CalBetaVal(data_of_interest_pt8)
-write.csv(top1Percent_BetaVar(data_of_interest_pt8), "[Insert pathway to where to save the clutvis formated file]\\top_1percent_beta_value_var_20DTFsamples_Patient_8.csv") #writing to file
+write.csv(top1Percent_BetaVar(data_of_interest_pt8), "[Insert path to where to save the clutvis formated file]\\top_1percent_beta_value_var_20DTFsamples_Patient_8.csv") #writing to file
