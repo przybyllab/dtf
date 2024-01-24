@@ -54,7 +54,7 @@ top1Percent_BetaVar <- function(df){
 
 
 #Read in the data
-edata <- read.csv('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\20samples_detailed_and_design_info_DTFhet_with_rounded_beta_matrix18Jan2023.csv', row.names = 1)
+edata <- read.csv('[insert pathway to methyaltion files under study]/20samples_detailed_and_design_info_DTFhet_with_rounded_beta_matrix18Jan2023.csv', row.names = 1)
 dim(edata)
 head(edata)
 
