@@ -24,7 +24,7 @@ for (scalling_type in c("uv")){
       for (pathway in pathways){
         
         #reading file 
-        file=sprintf("[clustvis formatted RNA-seq data pathway]\\design_info_Pt%d_vsd_%s_23March2023.csv", Patient_ID, pathway)
+        file=sprintf("[clustvis formatted RNA-seq data path]\\design_info_Pt%d_vsd_%s_23March2023.csv", Patient_ID, pathway)
         
         #preparing data for clustvis 
         imp = importData(file)
@@ -39,14 +39,14 @@ for (scalling_type in c("uv")){
                           legendPosition = "right", fontSize = 20, axisLabelPrefix = "PC",
                           showVariance = TRUE, showSampleIds = FALSE, maxColorLevels = 20,
                           maxShapeLevels = 62)
-        savePCA(pca, file = sprintf("[Pathway where to save PCA]\\clustvis_PCA_EuclidWard_20DTF_rowCenter_%s_scalling_%s_vsd_Patient%d_%s_clustvis_%s.pdf",Patient_ID,scalling_type,pathway,Patient_ID,Date, Package_version))
+        savePCA(pca, file = sprintf("[Path where to save PCA]\\clustvis_PCA_EuclidWard_20DTF_rowCenter_%s_scalling_%s_vsd_Patient%d_%s_clustvis_%s.pdf",Patient_ID,scalling_type,pathway,Patient_ID,Date, Package_version))
         
         
         #heatmap generation
         hm = generateHeatmap(proc, clustDistRows = NA, clustMethodRows = NA, clustDistCols = "euclidean", 
                              clustMethodCols = clusterType, legendColorScheme =  "Set2", fontSizeColnames = 20, 
                              fontSizeGeneral = 10, colorAnnoCol = c("Type", "Mutation","Year"), plotWidth = 15)
-        saveHeatmap(hm, file = sprintf("[Pathway where to save heatmaps]\\clustvisHeatmap_Euclidean_%s_20DTF_rowcenter_none_scalling_%s_vsd_Patient%d_%s_clustvis_%s.pdf", Patient_ID,  clusterType, pathway,Patient_ID,Date, Package_version))
+        saveHeatmap(hm, file = sprintf("[Path where to save heatmaps]\\clustvisHeatmap_Euclidean_%s_20DTF_rowcenter_none_scalling_%s_vsd_Patient%d_%s_clustvis_%s.pdf", Patient_ID,  clusterType, pathway,Patient_ID,Date, Package_version))
       }
     }
   }
@@ -61,7 +61,7 @@ for (scalling_type in c("uv")){
       for (topxvar in  c("Top1Percent",)){
         
         #reading file
-        file = sprintf("[clustvis formatted RNA-seq data pathway]\\RNA_seq_design_info_with_vsd_values_%s_Patient%d_4April2023.csv", topxvar, Patient_ID)
+        file = sprintf("[clustvis formatted RNA-seq data path]\\RNA_seq_design_info_with_vsd_values_%s_Patient%d_4April2023.csv", topxvar, Patient_ID)
         
         #preparing data for clustvis
         imp = importData(file)
@@ -76,13 +76,13 @@ for (scalling_type in c("uv")){
                           legendPosition = "right", fontSize = 26, axisLabelPrefix = "PC",
                           showVariance = TRUE, showSampleIds = FALSE, maxColorLevels = 15,
                           maxShapeLevels = 62)
-        savePCA(pca, file = sprintf("[Pathway where to save PCA]\\clustvis_PCA_Euclidean_Ward_20DTFsamples_rowCenter_%s_scalling_%s_vsd_Patient%d_%s_clustvisVersion_%s.pdf",Patient_ID,scalling_type, topxvar,Patient_ID,Date, Package_version))
+        savePCA(pca, file = sprintf("[Path where to save PCA]\\clustvis_PCA_Euclidean_Ward_20DTFsamples_rowCenter_%s_scalling_%s_vsd_Patient%d_%s_clustvisVersion_%s.pdf",Patient_ID,scalling_type, topxvar,Patient_ID,Date, Package_version))
         
         #heatmap generation
         hm = generateHeatmap(proc, clustDistRows = NA, clustMethodRows = NA, clustDistCols = "euclidean",
                              colorAnnoCol = c("Type", "Mutation","Year"),
                              clustMethodCols = clusterType, legendColorScheme =  "Set2", fontSizeColnames = 20,  fontSizeGeneral = 15)
-        saveHeatmap(hm, file = sprintf("[Pathway where to save heatmaps]\\clustvisHeatmap_Euclidean_%s_20DTFsamples_rowcenter_none_scalling_%s_vsd_Patient%d_%s_clustvisVersion_%s.pdf", Patient_ID, clusterType, topxvar,Patient_ID,Date, Package_version))
+        saveHeatmap(hm, file = sprintf("[Path where to save heatmaps]\\clustvisHeatmap_Euclidean_%s_20DTFsamples_rowcenter_none_scalling_%s_vsd_Patient%d_%s_clustvisVersion_%s.pdf", Patient_ID, clusterType, topxvar,Patient_ID,Date, Package_version))
       }
     }
   }
