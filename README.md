@@ -63,3 +63,9 @@ This study shows an unexpected degree of intra- and inter-tumor heterogeneity in
 2. RNA_seq_pathway_clutvis_graph_creation.R
 
 3. RNA_seq_PCA_heatmap_generation_clustvis.R
+
+<h2>CNV Analysis</h2>
+
+1. manually made the clustvis formatted files
+
+2. 
