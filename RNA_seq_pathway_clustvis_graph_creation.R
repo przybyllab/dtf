@@ -54,11 +54,11 @@ top1Percent_Var <- function(df){
 for (Patient_ID in c(1,5,8)){
 
   #reading in the file and processing it so that it is the proper format
-  tdata <- read.csv(sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Pt%d_vsd.csv', Patient_ID))
+  tdata <- read.csv(sprintf('[VSD value Pathway]\\Pt%d_vsd.csv', Patient_ID))
   
   rownames(tdata) <- make.names(tdata[,1], unique = TRUE)
   tdata <- tdata[,2: dim(tdata)[2]] #removing the first column
-  designData <- read.csv(sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\design_pt%d.csv', Patient_ID), row.names = 1)
+  designData <- read.csv(sprintf('[design data file pathway]\\design_pt%d.csv', Patient_ID), row.names = 1)
   print(dim(designData))
   designData <- t(designData)
   
@@ -70,14 +70,14 @@ for (Patient_ID in c(1,5,8)){
   #writing dataframe to csv
   
   write.csv(top1PerVar_vsd, 
-            sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Clustvis_format\\RNA_seq_design_info_with_vsd_values_Top1Percent_Patient%d_4April2023.csv', Patient_ID))
+            sprintf('[Path to where to save clustvis formatted RNA-seq data]\\RNA_seq_design_info_with_vsd_values_Top1Percent_Patient%d_4April2023.csv', Patient_ID))
 }
 
 pathways = c('PROGNOSTIC_MARKERS',)
 
 for (Patient_ID in c(1,5,8)){
-    design_file = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\design_pt%d.csv", Patient_ID)
-    file_path = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Pt%d_vsd_", Patient_ID)
+    design_file = sprintf("[design data file pathway]\\design_pt%d.csv", Patient_ID)
+    file_path = sprintf("[VSD value Pathway]\\Pt%d_vsd_", Patient_ID)
     for(pathway in pathways){
     
       #reading in the file and processing it so that it is the proper format
@@ -96,7 +96,7 @@ for (Patient_ID in c(1,5,8)){
       
       clustvis_file_name = sprintf("design_info_Pt%d_vsd_%s_23March2023", Patient_ID, pathway)
       write.csv(clustvis_format, 
-                sprintf('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Clustvis_format\\%s.csv', clustvis_file_name))
+                sprintf('[Path to where to save clustvis formatted RNA-seq data]\\%s.csv', clustvis_file_name))
       
     
   }
