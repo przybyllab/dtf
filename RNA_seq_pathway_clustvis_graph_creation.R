@@ -54,11 +54,11 @@ top1Percent_Var <- function(df){
 for (Patient_ID in c(1,5,8)){
 
   #reading in the file and processing it so that it is the proper format
-  tdata <- read.csv(sprintf('[VSD value Pathway]\\Pt%d_vsd.csv', Patient_ID))
+  tdata <- read.csv(sprintf('[VSD value Path]\\Pt%d_vsd.csv', Patient_ID))
   
   rownames(tdata) <- make.names(tdata[,1], unique = TRUE)
   tdata <- tdata[,2: dim(tdata)[2]] #removing the first column
-  designData <- read.csv(sprintf('[design data file pathway]\\design_pt%d.csv', Patient_ID), row.names = 1)
+  designData <- read.csv(sprintf('[design data file path]\\design_pt%d.csv', Patient_ID), row.names = 1)
   print(dim(designData))
   designData <- t(designData)
   
@@ -76,8 +76,8 @@ for (Patient_ID in c(1,5,8)){
 pathways = c('PROGNOSTIC_MARKERS',)
 
 for (Patient_ID in c(1,5,8)){
-    design_file = sprintf("[design data file pathway]\\design_pt%d.csv", Patient_ID)
-    file_path = sprintf("[VSD value Pathway]\\Pt%d_vsd_", Patient_ID)
+    design_file = sprintf("[design data file path]\\design_pt%d.csv", Patient_ID)
+    file_path = sprintf("[VSD value Path]\\Pt%d_vsd_", Patient_ID)
     for(pathway in pathways){
     
       #reading in the file and processing it so that it is the proper format
