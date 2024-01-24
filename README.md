@@ -66,6 +66,6 @@ This study shows an unexpected degree of intra- and inter-tumor heterogeneity in
 
 <h2>CNV Analysis</h2>
 
-1. manually made the clustvis formatted files
+1. Manually fromatted the clustvis files
 
-2. 
+2. Clustvis_Heatmaps_CNV.R
