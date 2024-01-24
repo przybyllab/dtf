@@ -81,7 +81,7 @@ for (Patient_ID in c(1,5,8)){
     for(pathway in pathways){
     
       #reading in the file and processing it so that it is the proper format
-      file_path = sprintf("C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\RNA_seq\\Pt%d_vsd_", Patient_ID)
+      file_path = sprintf("[Path to RNA-seq vsd values]\\Pt%d_vsd_", Patient_ID)
       file_with_edata <- paste(file_path, pathway, ".csv", sep = "")
       edata <-read.csv(file_with_edata)
       rownames(edata) <- make.names(edata[,1], unique = TRUE) #issue when setting rowname using csv
