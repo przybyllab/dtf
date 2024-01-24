@@ -2,13 +2,13 @@ library(matrixStats)
 
 
 #reading in experimental data 
-edata <- read.csv('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\20DTFsamples_rounded_beta_matrix_28Oct2022.csv', row.names = 1)
+edata <- read.csv("[Pathway to beta values]\\20DTFsamples_rounded_beta_matrix_28Oct2022.csv', row.names = 1)
 
 #reading design file 
-ddata <- read.csv('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\design_DTF_ALL_het_18Jan2023_design_DTF67_EE.csv')
+ddata <- read.csv('[design file for methylation data]\\design_DTF_ALL_het_18Jan2023_design_DTF67_EE.csv')
 
 #read in detailed methylation file 
-dmdata <- read.csv('C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\20samples_detailed_info_DTFhet_18Jan2023.csv')
+dmdata <- read.csv('C[desing file for methylation data]\\20samples_detailed_info_DTFhet_18Jan2023.csv')
 
 
 #turning STT into the index
@@ -46,5 +46,5 @@ rownames(design_methylation__data_no_lists) <- rownames(design_methylation__data
 
 #writing dataframe to csv
 write.csv(design_methylation__data_no_lists, 
-          'C:\\Users\\chels\\OneDrive\\Documents\\Pryzbyl_Lab\\Methylation\\20samples_detailed_and_design_info_DTFhet_with_rounded_beta_matrix18Jan2023.csv')
+          '[merged experimental and desing info pathway]\\20samples_detailed_and_design_info_DTFhet_with_rounded_beta_matrix18Jan2023.csv')
 
