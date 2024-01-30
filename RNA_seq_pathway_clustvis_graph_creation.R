@@ -45,8 +45,8 @@ top1Percent_Var <- function(df){
   #concatenating the design file and the top 1% variable read counts
   descript_top1percent = rbind(designData, top_1percent_var)
   
-  last_column = dim(descript_top1percent)[2] #this is the beta Variance row
-  descript_top1percent = descript_top1percent[,1:last_column -1] #removing the beta variance row
+  last_column = dim(descript_top1percent)[2] #this is the Variance row
+  descript_top1percent = descript_top1percent[,1:last_column -1] #removing the variance row
   
   return(descript_top1percent)
 }
